@@ -6,6 +6,7 @@ Just send a OOCSI request to the **coffee_channel** containing the following dat
 * **caffee_who** *int* which is the unique identifier of orderer. Cannot be 0.
 * **caffee_amount** *int* with the number of cups you want to order
 * **caffee_time_to_wait** *int* time (in minutes) you want the coffee to be ready
+
 Example request:
 ```
   // order a coffee
@@ -30,6 +31,7 @@ There are four different messages (**output_types**) that you can expect.
 * **output_type = 2**: Order cannot be confirmed (e.g. because the queue on the module is full)
 * **output_type = 3**: The order is being prepared
 * **output_type = 4**: The order is ready
+
 Example of receiving the messages:
 ```
 
