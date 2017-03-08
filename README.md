@@ -95,7 +95,7 @@ void setup() {
   oocsi = new OOCSI(this, "your_name", "oocsi.id.tue.nl");
 
   // subscribe to channel "coffee_channel"
-  //oocsi.subscribe("coffee_channel", "handleOOCSIEvent");
+  oocsi.subscribe("coffee_channel", "handleOOCSIEvent");
 
   // order a coffee
   oocsi .channel("coffee_channel")
