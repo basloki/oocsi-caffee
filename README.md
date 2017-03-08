@@ -45,7 +45,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
   
   output_type = event.getInt("output_type", 0);
   switch(output_type){
-    case 1:
+    case 1: // output_type == 1
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -55,7 +55,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Message: "+message);
       println("");
     break;
-    case 2:
+    case 2: // output_type == 2
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -65,7 +65,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Message: "+message);
       println("");
     break;
-    case 3:
+    case 3: // output_type == 3
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -73,6 +73,19 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Amount: "+amount);
       println("\t Who: "+who);
       println("\t Message: "+message);
+      println("");
+    break;
+    case 4: // output_type == 4
+      message = event.getString("message");
+      amount = event.getInt("amount", 0);
+      who = event.getInt("who", 0);
+      println("COFFEE READY:");
+      println("\t Amount: "+amount);
+      println("\t Who: "+who);
+      println("\t Message: "+message);
+      println("");
+    break;
+  }
       println("");
     break;
     case 4:
