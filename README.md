@@ -95,7 +95,7 @@ import nl.tue.id.oocsi.*;
 OOCSI oocsi;
 
 void setup() {
-  // connect to OOCSI server running on the same machine (localhost)
+  // connect to OOCSI server
   oocsi = new OOCSI(this, "your_name", "oocsi.id.tue.nl");
 
   // subscribe to channel "coffee_channel"
