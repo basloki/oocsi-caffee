@@ -1,10 +1,10 @@
 #include <ESP8266WiFi.h>
 #include "OOCSI.h"
 
-const char* OOCSIName = "CAFFEEE";    //name for connecting with OOCSI
+const char* OOCSIName = "your_name";    //name for connecting with OOCSI
 const char* hostserver = "oocsi.id.tue.nl";     //put the adress of your OOCSI server here, can be a web page or an IP adres string
-const char* ssid = "G3_4279";                    //SSID of your Wifi network, the library currently does not support WPA2 Enterprise networks
-const char* password = "titooooo";            //Password of your Wifi network.
+const char* ssid = "ssid_name";                    //SSID of your Wifi network, the library currently does not support WPA2 Enterprise networks
+const char* password = "supersecretpassword";            //Password of your Wifi network.
 const char* OOCSIChannel = "coffee_channel";       //name of the channel you want to subscribe to (can subscribe to multiple channels)
 
 void proccessOOCSI();
