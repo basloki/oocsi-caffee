@@ -8,7 +8,7 @@ Just send a OOCSI request to the **coffee_channel** containing the following dat
 * **caffee_time_to_wait** *int* time (in minutes) you want the coffee to be ready
 
 Example request:
-```
+```Processing
   // order a coffee
   oocsi .channel("coffee_channel")
         // some kind of user identifier, cannot be 0
@@ -35,7 +35,7 @@ There are four different messages (**output_types**) that you can expect.
 * **output_type = 4**: The order is ready
 
 Example of receiving the messages:
-```
+```Processing
 
 void handleOOCSIEvent(OOCSIEvent event) {
   int output_type;
@@ -90,7 +90,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
 ```
 
 ## Full example
-```
+```Processing
 import nl.tue.id.oocsi.*;
 OOCSI oocsi;
 
