@@ -12,7 +12,7 @@ Example request:
   // order a coffee
   oocsi .channel("coffee_channel")
         // some kind of user identifier, cannot be 0
-        .data("caffee_who", 1)
+        .data("caffee_who", int(random(1,99999)))
         // the amount of coffee you want
         .data("caffee_amount", 3) 
         // how long to wait for the coffee, in minutes
@@ -117,7 +117,7 @@ void setup() {
   // order a coffee
   oocsi .channel("coffee_channel")
         // some kind of user identifier, cannot be 0
-        .data("caffee_who", 1)
+        .data("caffee_who", int(random(1,99999)))
         // the amount of coffee you want
         .data("caffee_amount", 3) 
         // how long to wait for the coffee, in minutes
