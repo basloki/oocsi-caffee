@@ -26,6 +26,8 @@ You can receive status updates on your coffee order by listening to the **coffee
 * **amount** *int* number of cups ordered
 * **who** *int* unique identifier of orderer
 * **message** *String* description of output message
+
+### Output types
 There are four different messages (**output_types**) that you can expect.
 * **output_type = 1**: Order is confirmed
 * **output_type = 2**: Order cannot be confirmed (e.g. because the queue on the module is full)
