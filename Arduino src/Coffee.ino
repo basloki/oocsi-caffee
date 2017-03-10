@@ -133,6 +133,21 @@ void scheduleCoffee(int who, int howmuch, int when){
       coffeeLine[i][1] = howmuch;
       coffeeLine[i][2] = timeWhenIWantCoffee;
       full = false;
+
+      int pos;
+      //adds the right amount of coffee for each confirmed order
+      for(pos = 0; pos <= 45; pos += 1) // goes from 0 degrees to 45 degrees 
+      {                                  // in steps of 1 degree 
+        myservo.write(pos);             // tell servo to go to position in variable 'pos' 
+        delay(5);
+      }
+      delay(120);                       // the servo waits until the amount of coffee is added can vary depending on the time
+      for(pos = 45; pos>=0; pos-=1)     // opens the servo gate by 45 degrees 
+      {                                
+        myservo.write(pos);              // closes the servo gate back
+        delay(5);
+      }
+      
       Serial.print("CAFFEEEE: ADDED TO THE QUEUE ON PLACE: ");
       Serial.println(i);
       // output someting to oocsi
@@ -187,7 +202,10 @@ void iWantCoffeeNow(int howMuchCoffee, int who){
     }
   }
   
-  // prepare the coffee
+  // turns the coffee machine on
+  digitalWrite(2, HIGH);
+  
+  // output
   Serial.println("CAFFEEEE: OK I WILL MAKE COFFEE!");
   Serial.print("CAFFEEEE: ");
   Serial.print(howMuchCoffee);
