@@ -12,6 +12,8 @@ Servo myservo;
 
 void proccessOOCSI();
 
+void coffeeoutput();
+
 OOCSI oocsi(OOCSIName, hostserver, ssid, password, proccessOOCSI);  //setting up OOCSI. processOOCSI is the name of the fucntion to call when receiving messages, can be a random function name.
 
 // declare caffee variables
@@ -24,10 +26,11 @@ int coffeeLine[c_queueSize][3]; // [int userID, int amountOfCoffee, int whenToMa
 int prepareLine[c_queueSize][3]; // [int userID, int amountOfCoffee]
 
 void setup() {
-//*************************  
+
   myservo.attach(0);
-//*************************
-  
+
+  pinMode(2, OUTPUT); // Uses the GPI02 as output in order to control the digital relay that turns the coffee machine on and off
+
   for(int i = 0; i < c_queueSize; i = i + 1){
       coffeeLine[i][0] = 0;
       coffeeLine[i][1] = 0;
@@ -55,18 +58,7 @@ void setup() {
 }
 
 void loop() {
-//*************************
-  int pos;
 
-  for(pos = 0; pos <= 180; pos += 1) // goes from 0 degrees to 180 degrees 
-  {                                  // in steps of 1 degree 
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-  } 
-  for(pos = 180; pos>=0; pos-=1)     // goes from 180 degrees to 0 degrees 
-  {                                
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-  }
-//*************************
   // put your main code here, to run repeatedly:
   oocsi.check();  //function needs to be checked in order for OOCSI to process incoming data.
   
