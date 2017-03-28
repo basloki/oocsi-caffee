@@ -19,7 +19,7 @@ void setup() {
   // connect to OOCSI server running on the same machine (localhost)
   // with "receiverName" to be my channel others can send data to
   // (for more information how to run an OOCSI server refer to: https://iddi.github.io/oocsi/)
-  oocsi = new OOCSI(this, "basloki", "oocsi.id.tue.nl");
+  oocsi = new OOCSI(this, "othername", "oocsi.id.tue.nl");
 
   // subscribe to channel "testchannel"
   // either the channel name is used for looking for a handler method...
@@ -29,14 +29,18 @@ void setup() {
   
   println("Started");
   
+  oocsi.subscribe("coffee_channel", "handleOOCSIEvent");
+  
   // order a coffee
   oocsi .channel("coffee_channel")
         // some kind of user identifier, cannot be 0
         .data("caffee_who", 1)
         // the amount of coffee you want
-        .data("caffee_amount", 3) 
+        .data("caffee_amount", 1) 
         // how long to wait for the coffee, in minutes
-        .data("caffee_time_to_wait", 2)
+        .data("caffee_time_to_wait", 1)
+        // the command
+        .data("caffee_command", "add")
         .send(); 
   //delay(10000); // wait 10 seconds
   //oocsi .channel("coffee_channel")
@@ -47,77 +51,27 @@ void setup() {
   //      // how long to wait for the coffee, in minutes
   //      .data("caffee_time_to_wait", 3)
   //      .send(); 
-        
-  println("Order sent");
-  
-  oocsi .channel("coffee_channel")
-        // some kind of user identifier, cannot be 0
-        .data("output_type", 1)
-        // the amount of coffee you want
-        .data("message", "test message") 
-        // how long to wait for the coffee, in minutes
-        .data("amount", 2)
-        .data("who", 2)
-        .send(); 
   
   println("test sent");
   
   println("Started");
-  
-  oocsi.subscribe("coffee_channel", "handleOOCSIEvent");
-
 
   
 }
 
 
-void handleOOCSIEvent(OOCSIEvent event) {
-  int output_type;
-  int amount;
-  int who;
-  String message;
+void handleOOCSIEvent(OOCSIEvent event) 
+{
+  int output_type = event.getInt("output_type", 0);
+  int amount = event.getInt("amount", 0);
+  int who = event.getInt("who", 0);
+  int number = event.getInt("number", 0);
+  String message = event.getString("message", "NULL");
   
-  output_type = event.getInt("output_type", 0);
-  switch(output_type){
-    case 1:
-      message = event.getString("message");
-      amount = event.getInt("amount", 0);
-      who = event.getInt("who", 0);
-      println("ORDER CONFIRMED:");
-      println("\t Amount: "+amount);
-      println("\t Who: "+who);
-      println("\t Message: "+message);
-      println("");
-    break;
-    case 2:
-      message = event.getString("message");
-      amount = event.getInt("amount", 0);
-      who = event.getInt("who", 0);
-      println("ORDER NOT CONFIRMED:");
-      println("\t Amount: "+amount);
-      println("\t Who: "+who);
-      println("\t Message: "+message);
-      println("");
-    break;
-    case 3:
-      message = event.getString("message");
-      amount = event.getInt("amount", 0);
-      who = event.getInt("who", 0);
-      println("PREPARING COFFEE:");
-      println("\t Amount: "+amount);
-      println("\t Who: "+who);
-      println("\t Message: "+message);
-      println("");
-    break;
-    case 4:
-      message = event.getString("message");
-      amount = event.getInt("amount", 0);
-      who = event.getInt("who", 0);
-      println("COFFEE READY:");
-      println("\t Amount: "+amount);
-      println("\t Who: "+who);
-      println("\t Message: "+message);
-      println("");
-    break;
+  if (output_type > 0) {
+    println(message);
+    println("\t Amount: "+amount);
+    println("\t Who: "+who);
+    println("\t Number: "+number);
   }
 }
