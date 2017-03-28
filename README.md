@@ -6,6 +6,7 @@ Just send an OOCSI request to the **coffee_channel** containing the following da
 * **caffee_who** *int* which is the unique identifier of orderer. Cannot be 0.
 * **caffee_amount** *int* with the number of cups you want to order
 * **caffee_time_to_wait** *int* time (in minutes) you want the coffee to be ready
+* **caffee_command** *String* (optional) you can use the command "add" to order
 
 Example request:
 ```Processing
