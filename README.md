@@ -33,6 +33,9 @@ There are four different messages (**output_types**) that you can expect.
 * **output_type = 2**: Order cannot be confirmed (e.g. because the queue on the module is full)
 * **output_type = 3**: The order is being prepared
 * **output_type = 4**: The order is ready
+* **output_type = 5**: The order has been changed
+* **output_type = 6**: The order cannot be found
+* **output_type = 7**: The order has been removed
 
 Example of receiving the messages:
 ```Processing
