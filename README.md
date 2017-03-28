@@ -36,6 +36,8 @@ Example request for changing an order:
   oocsi .channel("coffee_channel")
         // command
         .data("caffee_command", "change")
+        // order number
+        .data("number", order_number)
         // some kind of user identifier, cannot be 0
         .data("caffee_who", 9001)
         // the amount of coffee you want
@@ -47,17 +49,13 @@ Example request for changing an order:
 
 Example request for deleting an order:
 ```Processing
-  // change a coffee order
+  // delete a coffee order
   int order_number = 1; // should be retrieved from the status update messages
   oocsi .channel("coffee_channel")
         // command
-        .data("caffee_command", "remove")
-        // some kind of user identifier, cannot be 0
-        .data("caffee_who", 9001)
-        // the amount of coffee you want
-        .data("caffee_amount", 3) 
-        // how long to wait for the coffee, in minutes
-        .data("caffee_time_to_wait", 2)
+        .data("caffee_command", "change")
+        // order number
+        .data("number", order_number)
         .send(); 
 ```
 
