@@ -44,13 +44,13 @@ private:
 	void _PowerOn(bool set);
 	void _AddCoffee(int amount);
 
-	const char* _name = "thecoffeegrouparduino";
+	const char* _name = "thecoffeegrouparduino546";
 	const char* _server = "oocsi.id.tue.nl";
 	const char* _ssid = "G3_7241";
 	const char* _psswd = "titooooo";
 	const char* _channel = "coffee_channel";
 	const int _bundletime = 30*60;
-	const int _timepcup = 1*60;
+	const int _timepcup = 2*60;
 	const int _maxorders = 10;
 	const uint8_t _servopin = 0;
 	const uint8_t _powerpin = 2;

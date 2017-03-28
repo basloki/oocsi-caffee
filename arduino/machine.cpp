@@ -90,10 +90,13 @@ void Coffee::Callback()
 	Order neworder;
 	long tmp;
 
+	// Print the message
+	_this->_oocsi.printMessage();
+
 	// Get the order and command
 	neworder.id = _this->_oocsi.getLong("caffee_who", 0);
 	neworder.amount = _this->_oocsi.getLong("caffee_amount", 0);
-	tmp = _this->_oocsi.getLong("caffee_amount", 0);
+	tmp = _this->_oocsi.getLong("caffee_time_to_wait", 0);
 	neworder.time = (tmp < 0) ? millis()/1000 : millis()/1000+60*(unsigned long)tmp;
 	cmd = _this->_oocsi.getString("caffee_command", "add");
 
@@ -194,14 +197,14 @@ void Coffee::_CheckQueue()
 
 	// Check the list if coffee needs to be made and add it to the "in progress" queue
 	for (auto it = _orders.begin(); it != _orders.end();) {
-		if (totalamount) {
+		if (!totalamount) {
 			if (it->time <= time)
 				AddToVectorHelper(totalamount, it);
 			else
 				break;
 		}
 		else {
-			if (it->time >= time) {
+			if (it->time > time) {
 				if (it->time-time <= _bundletime && totalamount < _maxorders) {
 					if (totalamount+it->amount <= 10)
 						AddToVectorHelper(totalamount, it);
@@ -211,18 +214,14 @@ void Coffee::_CheckQueue()
 				else
 					break;
 			}
-			else if (time-it->time <= _bundletime) {
-				if (totalamount < _maxorders) {
-					if (totalamount+it->amount <= 10)
-						AddToVectorHelper(totalamount, it);
-					else
-						++it;
-				}
+			else if (totalamount < _maxorders) {
+				if (it->time-time < 1000000 && totalamount+it->amount <= 10)
+					AddToVectorHelper(totalamount, it);
 				else
-					break;
+					++it;
 			}
 			else
-				++it;
+				break;
 		}
 	}
 
