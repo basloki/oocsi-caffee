@@ -53,7 +53,7 @@ Example request for deleting an order:
   int order_number = 1; // should be retrieved from the status update messages
   oocsi .channel("coffee_channel")
         // command
-        .data("caffee_command", "change")
+        .data("caffee_command", "remove")
         // order number
         .data("number", order_number)
         .send(); 
