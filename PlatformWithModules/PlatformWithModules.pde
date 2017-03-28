@@ -33,7 +33,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
     String sc_module = "Caffee";    
     int sc_currentMin = minute() + minutesToWait; 
     int sc_currentHour = hour() + hoursToWait;
-    String sc_category = "B"; // not sure this is correct
+    String sc_category = "Food"; // not sure this is correct
 
     oocsi  
        .channel("SmartClock")    
