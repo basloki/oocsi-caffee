@@ -187,6 +187,8 @@ void handleOOCSIEvent(OOCSIEvent event) {
 import nl.tue.id.oocsi.*;
 OOCSI oocsi;
 
+int order_number;
+
 void setup() {
   // connect to OOCSI server
   oocsi = new OOCSI(this, "your_name", "oocsi.id.tue.nl");
@@ -264,8 +266,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Order number: "+number);
       println("");
     break;
-  }
-  case 5:
+    case 5:
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -277,8 +278,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Order number: "+number);
       println("");
     break;
-  }
-  case 6:
+    case 6:
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -290,8 +290,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Order number: "+number);
       println("");
     break;
-  }
-  case 7:
+    case 7:
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -304,7 +303,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("");
     break;
   }
-}
 
 }
+
 ```
