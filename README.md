@@ -77,8 +77,9 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("\t Who: "+who);
       println("\t Message: "+message);
       println("");
+      println("");
     break;
-    case 4: // output_type == 4
+    case 4:
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
@@ -89,13 +90,33 @@ void handleOOCSIEvent(OOCSIEvent event) {
       println("");
     break;
   }
-      println("");
-    break;
-    case 4:
+  case 5:
       message = event.getString("message");
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
-      println("COFFEE READY:");
+      println("ORDER CHANGED:");
+      println("\t Amount: "+amount);
+      println("\t Who: "+who);
+      println("\t Message: "+message);
+      println("");
+    break;
+  }
+  case 6:
+      message = event.getString("message");
+      amount = event.getInt("amount", 0);
+      who = event.getInt("who", 0);
+      println("ORDER CANNOT BE FOUND:");
+      println("\t Amount: "+amount);
+      println("\t Who: "+who);
+      println("\t Message: "+message);
+      println("");
+    break;
+  }
+  case 7:
+      message = event.getString("message");
+      amount = event.getInt("amount", 0);
+      who = event.getInt("who", 0);
+      println("ORDER CANCELED:");
       println("\t Amount: "+amount);
       println("\t Who: "+who);
       println("\t Message: "+message);
@@ -135,9 +156,7 @@ void handleOOCSIEvent(OOCSIEvent event) {
   int who;
   String message;
   
-  // check if there is a message with a different output_type
   output_type = event.getInt("output_type", 0);
-  
   switch(output_type){
     case 1: // output_type == 1
       message = event.getString("message");
@@ -151,6 +170,14 @@ void handleOOCSIEvent(OOCSIEvent event) {
     break;
     case 2: // output_type == 2
       message = event.getString("message");
+      amount = event.getInt("amount", 0);
+      who = event.getInt("who", 0);
+      println("ORDER NOT CONFIRMED:");
+      println("\t Amount: "+amount);
+      println("\t Who: "+who);
+      println("\t Message: "+message);
+      println("");
+    break;
       amount = event.getInt("amount", 0);
       who = event.getInt("who", 0);
       println("ORDER NOT CONFIRMED:");
